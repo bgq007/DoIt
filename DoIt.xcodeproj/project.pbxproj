@@ -15,6 +15,7 @@
 		28358B9A1E021DB40064744F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28358B981E021DB40064744F /* LaunchScreen.storyboard */; };
 		28358BA21E0220400064744F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28358BA11E0220400064744F /* Task.swift */; };
 		28358BA41E0223B80064744F /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28358BA31E0223B80064744F /* AddTaskViewController.swift */; };
+		28358BA61E022F800064744F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28358BA51E022F800064744F /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		28358B9B1E021DB40064744F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28358BA11E0220400064744F /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		28358BA31E0223B80064744F /* AddTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		28358BA51E022F800064744F /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				28358B8C1E021DB40064744F /* AppDelegate.swift */,
 				28358B8E1E021DB40064744F /* ViewController.swift */,
 				28358B901E021DB40064744F /* Main.storyboard */,
+				28358BA51E022F800064744F /* DetailsViewController.swift */,
 				28358BA31E0223B80064744F /* AddTaskViewController.swift */,
 				28358BA11E0220400064744F /* Task.swift */,
 				28358B961E021DB40064744F /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 				28358B8F1E021DB40064744F /* ViewController.swift in Sources */,
 				28358B8D1E021DB40064744F /* AppDelegate.swift in Sources */,
 				28358BA41E0223B80064744F /* AddTaskViewController.swift in Sources */,
+				28358BA61E022F800064744F /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,27 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var tasks : [Task] = []
+    var selectedIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-    
+        
         tasks = makeTasks()
         
         tableView.delegate = self
         tableView.dataSource = self
-    
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
@@ -39,17 +40,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let task = tasks[indexPath.row]
         
         if task.important {
-        
+            
             cell.textLabel?.text = "❗️\(task.name)"
         } else {
-         cell.textLabel?.text = task.name
+            cell.textLabel?.text = task.name
         }
         return cell
+        
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        
+        let task = tasks[indexPath.row]
+        performSegue(withIdentifier: "detailSegue", sender: task)
     }
     
     func makeTasks() -> [Task] {
-            let task1 = Task()
+        let task1 = Task()
         task1.name = "Walk the Dog"
         task1.important = false
         
@@ -61,13 +69,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func plusTapped(_ sender: Any) {
-    performSegue(withIdentifier: "addSegue", sender: nil)
+        performSegue(withIdentifier: "addSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nextVC = segue.destination as! AddTaskViewController
-        nextVC.previousVC = self
+        if segue.identifier == "addSegue" {
+            let nextVC = segue.destination as! AddTaskViewController
+            nextVC.previousVC = self
+        }
+        
+        if segue.identifier == "detailSegue" {
+            let nextVC = segue.destination as! DetailsViewController
+            nextVC.task = sender as! Task
+            nextVC.previousVC = self
+        }
     }
-    
 }
 
