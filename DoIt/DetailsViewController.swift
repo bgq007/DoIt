@@ -12,28 +12,31 @@ class DetailsViewController: UIViewController {
 
     @IBOutlet weak var taskDetails: UILabel!
     
-    var previousVC = ViewController()
+    // var previousVC = ViewController()
     
-    var task = Task()
+    var task : Task? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
    
-        if task.important {
+        if task!.important {
             
-        taskDetails?.text = "❗️\(task.name)"
+        taskDetails?.text = "❗️\(task!.name!)"
         
     
         } else {
-            taskDetails?.text = task.name
+            taskDetails?.text = task!.name!
         }
     }
     
     @IBAction func completedTask(_ sender: Any) {
-        previousVC.tasks.remove(at: previousVC.selectedIndex)
-        previousVC.tableView.reloadData()
+       // previousVC.tasks.remove(at: previousVC.selectedIndex)
+       // previousVC.tableView.reloadData()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        context.delete(task!)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         navigationController!.popViewController(animated: true)
     }
     

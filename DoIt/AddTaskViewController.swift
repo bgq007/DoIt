@@ -16,7 +16,7 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var importantSwitch: UISwitch!
     
     
-    var previousVC = ViewController()
+    // var previousVC = ViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,17 +25,25 @@ class AddTaskViewController: UIViewController {
     }
 
     @IBAction func addTask(_ sender: Any) {
+        // Connect to AppDelegate
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
         // Create a task
         
-        let task = Task()
+        
+        let task = Task(context: context)
         task.name = taskName.text!
         task.important = importantSwitch.isOn
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         
         // Add it to VC
         
-        previousVC.tasks.append(task)
-        previousVC.tableView.reloadData()
+        // previousVC.tasks.append(task)
+        // previousVC.tableView.reloadData()
+        
+        // ^^ Updated with CoreData functionality
+        
         navigationController!.popViewController(animated: true)
         
     }
